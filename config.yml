@@ -1,0 +1,26 @@
+parkours:
+  parkour1:
+    startNPC: 10
+    endNPC: 11
+    allowedWorld: "floating"
+    endCommands:
+      - "msg +1 exp (test)"
+    startLocation:
+      world: "world"
+      x: 12
+      y: 1
+      z: 14
+      yaw: 0
+      pitch: 0
+    finishLocation:
+      world: "floating"
+      x: 14
+      y: 4
+      z: 25
+      yaw: 0
+      pitch: 0
+#  parkour2:
+#    startNPC: 3
+#    endNPC: 4
+#    endCommands:
+#      - "say %player% completó parkour 2 como un profesional"

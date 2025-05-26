@@ -1,0 +1,10 @@
+name: Parkour-GameSystem
+version: 1.0.0v_BUILD-0001
+main: rottenbonestudio.parkourgame.SpeedrunPlugin
+api-version: 1.17
+depend: [Citizens , PlaceholderAPI]
+description: Plugin de speedrun con cronómetro BossBar y NPCs configurables.
+
+commands:
+  salir:
+    description: Cancela el parkour actual y te teletransporta al final.
