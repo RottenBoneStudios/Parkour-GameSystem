@@ -55,7 +55,7 @@ Un plugin completo de parkour y speedrun para servidores PaperMC. Los jugadores 
 
 ## 🧩 Dependencias requeridas
 
-- [PaperMC 1.17+](https://papermc.io/)
+- [PaperMC 1.13+](https://papermc.io/)
 - [Citizens](https://www.spigotmc.org/resources/citizens.13811/)
 - [PlaceholderAPI](https://www.spigotmc.org/resources/placeholderapi.6245/)
 
