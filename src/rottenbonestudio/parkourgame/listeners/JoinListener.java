@@ -22,8 +22,10 @@ public class JoinListener implements Listener {
 	public void onJoin(PlayerJoinEvent event) {
 		Player player = event.getPlayer();
 
-		Location spawnLocation = new Location(Bukkit.getWorld("world"), 16, 41, -5, 0f, 0f);
-		player.teleport(spawnLocation);
+	    Bukkit.getScheduler().runTaskLater(plugin, () -> {
+	        Location spawnLocation = new Location(Bukkit.getWorld("world"), 16, 41, -5, 0f, 0f);
+	        player.teleport(spawnLocation);
+	    }, 15L);
 
 		ItemStack item = player.getInventory().getItem(8);
 		if (PlayerInteractListener.isToggleItem(item)) {
