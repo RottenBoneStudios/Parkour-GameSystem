@@ -5,6 +5,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import rottenbonestudio.parkourgame.commands.SalirCommand;
 import rottenbonestudio.parkourgame.listeners.CheckpointListener;
+import rottenbonestudio.parkourgame.listeners.DeathListener;
 import rottenbonestudio.parkourgame.listeners.JoinListener;
 import rottenbonestudio.parkourgame.listeners.NPCListener;
 import rottenbonestudio.parkourgame.listeners.PlayerInteractListener;
@@ -41,6 +42,7 @@ public class SpeedrunPlugin extends JavaPlugin {
 		getServer().getPluginManager().registerEvents(new PlayerInteractListener(this), this);
 		getServer().getPluginManager().registerEvents(new JoinListener(this), this);
 	    getServer().getPluginManager().registerEvents(new CheckpointListener(this), this);
+	    getServer().getPluginManager().registerEvents(new DeathListener(this), this);
 	}
 	
 	public CheckpointManager getCheckpointManager() {

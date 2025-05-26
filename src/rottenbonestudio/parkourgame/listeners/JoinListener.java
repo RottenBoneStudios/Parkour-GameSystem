@@ -1,6 +1,7 @@
 package rottenbonestudio.parkourgame.listeners;
 
 import org.bukkit.Bukkit;
+import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -21,6 +22,9 @@ public class JoinListener implements Listener {
 	public void onJoin(PlayerJoinEvent event) {
 		Player player = event.getPlayer();
 
+		Location spawnLocation = new Location(Bukkit.getWorld("world"), 16, 41, -5, 0f, 0f);
+		player.teleport(spawnLocation);
+
 		ItemStack item = player.getInventory().getItem(8);
 		if (PlayerInteractListener.isToggleItem(item)) {
 			player.getInventory().clear(8);
@@ -37,10 +41,10 @@ public class JoinListener implements Listener {
 				other.showPlayer(plugin, player);
 			}
 		}
-		
+
 		ItemStack firstSlot = player.getInventory().getItem(0);
 		if (PlayerInteractListener.isExitItem(firstSlot)) {
-		    player.getInventory().clear(0);
+			player.getInventory().clear(0);
 		}
 
 	}
