@@ -27,8 +27,9 @@ public class FlightPreventionListener implements Listener {
 
         if (parkourManager.getActiveParkour(player) != null) {
             event.setCancelled(true);
-            player.setAllowFlight(false);
-            player.setFlying(false);
+			player.setAllowFlight(false);
+			player.setFlying(false);
         }
     }
+    
 }

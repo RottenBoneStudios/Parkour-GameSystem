@@ -99,6 +99,8 @@ public class ParkourManager {
 		savedInventories.put(player.getUniqueId(), player.getInventory().getContents().clone());
 		savedArmorContents.put(player.getUniqueId(), player.getInventory().getArmorContents().clone());
 		player.getInventory().clear();
+		player.setAllowFlight(false);
+		player.setFlying(false);
 		player.sendMessage(plugin.name + "§ePreparándote para comenzar...");
 
 
@@ -229,6 +231,7 @@ public class ParkourManager {
 		}
 
 		player.sendMessage(plugin.name + "§aTerminaste el parkour en §b" + elapsed + "s");
+		player.setAllowFlight(true);
 
 		UUID uuid = player.getUniqueId();
 		int previousTime = plugin.getPlayerDataManager().getBestTime(uuid, parkourId);
@@ -311,6 +314,7 @@ public class ParkourManager {
 
 		startTimes.remove(uuid);
 		plugin.getCheckpointManager().clearCheckpoint(player.getUniqueId());
+		player.setAllowFlight(true);
 
 		BossBar bar = timers.remove(uuid);
 		if (bar != null)
