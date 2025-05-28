@@ -31,6 +31,9 @@ public class ParkourManager {
 	private final Map<String, ConfigurationSection> parkours;
 
 	private final Map<UUID, String> activeParkour = new HashMap<>();
+	
+	private final Map<UUID, ItemStack[]> savedInventories = new HashMap<>();
+	private final Map<UUID, ItemStack[]> savedArmorContents = new HashMap<>();
 
 	public ParkourManager(SpeedrunPlugin plugin) {
 		this.plugin = plugin;
@@ -93,7 +96,11 @@ public class ParkourManager {
 		}
 
 		activeParkour.put(player.getUniqueId(), parkourId);
+		savedInventories.put(player.getUniqueId(), player.getInventory().getContents().clone());
+		savedArmorContents.put(player.getUniqueId(), player.getInventory().getArmorContents().clone());
+		player.getInventory().clear();
 		player.sendMessage(plugin.name + "§ePreparándote para comenzar...");
+
 
 		ItemStack tinte = new ItemStack(Material.LIME_DYE);
 		ItemMeta meta = tinte.getItemMeta();
@@ -204,6 +211,15 @@ public class ParkourManager {
 		if (isCheckpointItem(checkpoint)) {
 			player.getInventory().clear(1);
 		}
+		
+		ItemStack[] inventory = savedInventories.remove(player.getUniqueId());
+		ItemStack[] armor = savedArmorContents.remove(player.getUniqueId());
+		if (inventory != null) {
+		    player.getInventory().setContents(inventory);
+		}
+		if (armor != null) {
+		    player.getInventory().setArmorContents(armor);
+		}
 
 		ConfigurationSection parkour = parkours.get(parkourId);
 		if (parkour != null) {
@@ -313,6 +329,15 @@ public class ParkourManager {
 		ItemStack checkpoint = player.getInventory().getItem(1);
 		if (isCheckpointItem(checkpoint)) {
 			player.getInventory().clear(1);
+		}
+		
+		ItemStack[] inventory = savedInventories.remove(player.getUniqueId());
+		ItemStack[] armor = savedArmorContents.remove(player.getUniqueId());
+		if (inventory != null) {
+		    player.getInventory().setContents(inventory);
+		}
+		if (armor != null) {
+		    player.getInventory().setArmorContents(armor);
 		}
 
 		activeParkour.remove(uuid);

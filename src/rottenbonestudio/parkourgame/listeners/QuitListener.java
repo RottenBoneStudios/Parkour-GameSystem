@@ -17,6 +17,7 @@ public class QuitListener implements Listener {
     public void onQuit(PlayerQuitEvent event) {
         if (plugin.getParkourManager().hasActiveTimer(event.getPlayer())) {
             plugin.getParkourManager().cancelParkour(event.getPlayer());
+            plugin.getParkourManager().cancelParkour(event.getPlayer());
         }
     }
     
